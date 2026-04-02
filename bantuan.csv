@@ -1,0 +1,18 @@
+Nama,RT,RW,Status Kelayakan,Jenis Bantuan,Nominal Bantuan,Status Penyaluran,Keterangan
+Ahmad,10,03,Layak,PKH,750000,Sudah Cair,Kategori Lansia & Kesehatan
+Ilham,01,02,Tidak Layak,-,0,Dibatalkan,Ekonomi Mampu (Wiraswasta)
+Siti,10,02,Layak,BPNT,200000,Proses,Bantuan Pangan Non-Tunai
+Rizky,07,01,Layak,BLT BBM,300000,Sudah Cair,Kompensasi Energi
+Tono,04,02,Tidak Layak,-,0,Dibatalkan,Data NIK Tidak Padan Capil
+Agus,09,03,Layak,PKH,600000,Sudah Cair,Kategori Anak Sekolah
+Rina,05,01,Layak,KIP Kuliah,1000000,Verifikasi,Beasiswa Pendidikan
+Fajar,01,03,Tidak Layak,-,0,Dibatalkan,Terdeteksi sebagai ASN/PNS
+Wati,09,04,Layak,BPNT,200000,Sudah Cair,Bantuan Sembako Reguler
+Andi,02,04,Tidak Layak,-,0,Dibatalkan,Terdeteksi sebagai ASN/PNS
+Dedi,03,04,Layak,BLT Desa,300000,Sudah Cair,Dana Desa Tahap 1
+Budi,02,02,Layak,BPNT,200000,Proses,Verifikasi Rekening Bank
+Fathan,04,05,Tidak Layak,-,0,Dibatalkan,Penghasilan di Atas Ambang Batas
+Rina,05,05,Layak,PKH,750000,Sudah Cair,Kategori Disabilitas
+Dewi,02,02,Layak,Sembako,200000,Sudah Cair,Paket Sembako Daerah
+Rudi,05,02,Tidak Layak,-,0,Dibatalkan,Ekonomi Mampu
+Rudi,03,03,Layak,BLT Desa,300000,Proses,Dana Desa Tahap 2
