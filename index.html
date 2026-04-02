@@ -187,25 +187,71 @@ nav a{color:white;text-decoration:none;font-weight:bold;}
   </div>
 </section>
 <section class="section" id="berita">
-<h2>Berita Terbaru</h2>
-<div class="slider-container">
-<div class="slider" id="slider">
-  <div class="slide">
-    <div class="card"><img src="pramonowfh.png"><p>Video: ASN Jakarta WFH Tiap Jumat.</p></div>
-    <div class="card"><img src="spbu.jpeg"><p>Daftar Harga BBM Per 1 April 2026.</p></div>
-  </div>
-  <div class="slide">
-    <div class="card"><img src="kipkuliah.png"><p>Cara Daftar KIP Kuliah 2026.</p></div>
-    <div class="card"><img src="wfh.jpeg"><p>Pemerintah Terapkan WFH bagi Swasta.</p></div>
-  </div>
-</div>
-</div>
-<div style="text-align:center;">
-<button class="nav-btn" onclick="prevSlide()">⬅ Sebelumnya</button>
-<button class="nav-btn" onclick="nextSlide()">Berikutnya ➡</button>
-</div>
-</section>
+  <h2 style="color: orange; margin-bottom: 20px;">Berita Terbaru</h2>
+  
+  <div class="slider-container" style="width: 100%; overflow: hidden;">
+    <div class="slider" id="slider" style="display: flex; transition: transform 0.5s ease-in-out;">
+      
+      <div class="slide" style="min-width: 100%; display: flex; gap: 20px;">
+        <div class="card" style="flex: 1; display: flex; flex-direction: column; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <div style="width: 100%; height: 180px; overflow: hidden;">
+            <img src="PramonoWFH.PNG" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 15px; flex-grow: 1;">
+            <a href="https://megapolitan.kompas.com/read/2026/04/01/09324321/asn-jakarta-wfh-tiap-jumat-pramono-minta-sektor-ini-tetap-masuk#google_vignette" target="_blank" style="text-decoration: none; color: #ff7a00; font-weight: bold; font-size: 16px; display: block; margin-bottom: 8px;">
+              Pramono: ASN Jakarta WFH Tiap Jumat.
+            </a>
+            <p style="font-size: 13px; color: #666; line-height: 1.4;">Langkah baru pemerintah Jakarta untuk mengurangi kemacetan dan polusi udara. Simak sektor apa saja yang tetap wajib masuk kantor!</p>
+          </div>
+        </div>
 
+        <div class="card" style="flex: 1; display: flex; flex-direction: column; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <div style="width: 100%; height: 180px; overflow: hidden;">
+            <img src="SPBU.JPEG" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 15px; flex-grow: 1;">
+            <a href="https://otomotif.kompas.com/read/2026/04/01/061200215/daftar-harga-bbm-pertamina-di-seluruh-indonesia-per-1-april-2026" target="_blank" style="text-decoration: none; color: #ff7a00; font-weight: bold; font-size: 16px; display: block; margin-bottom: 8px;">
+              Daftar Harga BBM Per 1 April 2026.
+            </a>
+            <p style="font-size: 13px; color: #666; line-height: 1.4;">Pertamina resmi merilis penyesuaian harga BBM non-subsidi di seluruh wilayah Indonesia. Cek harga terbaru di SPBU kota Anda sebelum mengisi bahan bakar.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide" style="min-width: 100%; display: flex; gap: 20px;">
+        <div class="card" style="flex: 1; display: flex; flex-direction: column; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <div style="width: 100%; height: 180px; overflow: hidden;">
+            <img src="kipkuliah.PNG" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 15px; flex-grow: 1;">
+            <a href="https://www.detik.com/jogja/kota-pelajar/d-8424611/cara-daftar-kip-kuliah-2026-lengkap-syarat-bantuan-dana-link-jadwal-cair" target="_blank" style="text-decoration: none; color: #ff7a00; font-weight: bold; font-size: 16px; display: block; margin-bottom: 8px;">
+              Cara Daftar KIP Kuliah 2026.
+            </a>
+            <p style="font-size: 13px; color: #666; line-height: 1.4;">Kesempatan emas kuliah gratis bagi lulusan SMA sederajat. Pelajari alur pendaftaran, dokumen wajib, hingga jadwal pencairan dana bantuannya di sini.</p>
+          </div>
+        </div>
+
+        <div class="card" style="flex: 1; display: flex; flex-direction: column; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <div style="width: 100%; height: 180px; overflow: hidden;">
+            <img src="wfh.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 15px; flex-grow: 1;">
+            <a href="https://www.merdeka.com/peristiwa/pemerintah-resmi-umumkan-wfh-untuk-asn-tiap-jumat-berlaku-mulai-1-april-2026-556612-mvk.html" target="_blank" style="text-decoration: none; color: #ff7a00; font-weight: bold; font-size: 16px; display: block; margin-bottom: 8px;">
+              Pemerintah Terapkan WFH bagi Swasta.
+            </a>
+            <p style="font-size: 13px; color: #666; line-height: 1.4;">Kebijakan kerja dari rumah kini mulai meluas ke sektor swasta. Bagaimana dampaknya terhadap produktivitas dan kesejahteraan karyawan di tahun 2026?</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top: 20px;">
+    <button class="nav-btn" onclick="prevSlide()" style="padding: 10px 20px; background: orange; border: none; color: white; cursor: pointer; border-radius: 5px; margin-right: 10px;">⬅ Sebelumnya</button>
+    <button class="nav-btn" onclick="nextSlide()" style="padding: 10px 20px; background: orange; border: none; color: white; cursor: pointer; border-radius: 5px;">Berikutnya ➡</button>
+  </div>
+</section>
 <section class="map-section">
 <h2 class="map-title">📍 Google Maps</h2>
 <div class="map-card">
