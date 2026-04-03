@@ -341,15 +341,15 @@ function verifyOTP(){
 // ===== BACKSOUND =====
 const audio1=document.getElementById("audio1");
 const audio2=document.getElementById("audio2");
-audio2.volume=1;
+audio2.volume=0.7;
 
 function playAudio(){
   audio1.play().catch(e=>console.log("Audio1 tidak bisa autoplay",e));
   audio2.play().catch(e=>console.log("Audio2 tidak bisa autoplay",e));
 
   audio1.addEventListener("play", ()=>{audio2.volume=0.4;});
-  audio1.addEventListener("ended", ()=>{audio2.volume=1;});
-  audio1.addEventListener("pause", ()=>{audio2.volume=1;});
+  audio1.addEventListener("ended", ()=>{audio2.volume=0.5;});
+  audio1.addEventListener("pause", ()=>{audio2.volume=0.5;});
 
   document.removeEventListener("click", playAudio);
   document.removeEventListener("scroll", playAudio);
