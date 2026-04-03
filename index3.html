@@ -8,159 +8,163 @@
     <style>
         /* --- CSS DASAR --- */
         *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-        body{line-height:1.6;color:#333;background:#f9f9f9; min-height: 100vh; display: flex; flex-direction: column;}
-        
-        header{
-            background:#ff7a00; color:white; padding:10px 30px; 
-            position:sticky; top:0; z-index:1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        body{
+            line-height:1.6;
+            color:#333;
+            background:#f9f9f9; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
         }
-        nav{display:flex; justify-content:space-between; align-items:center;}
-        .logo-area {display:flex; align-items:center; gap:10px;}
-        .logo-area img {height:55px; width:55px; border-radius:12px;}
         
-        nav ul{display:flex; list-style:none;}
-        nav ul li{margin-left:25px;}
-        nav a{color:white; text-decoration:none; font-weight:bold; font-size: 15px;}
+        /* HEADER: Full Width & Center Content */
+        header {
+            background:#ff7a00; 
+            color:white; 
+            padding:10px 0; 
+            position:sticky; 
+            top:0; 
+            z-index:1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+        }
 
-        /* --- KONTEN PENCARIAN --- */
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+
+        .logo-area { display:flex; align-items:center; gap:10px; }
+        .logo-area img { height:55px; width:55px; border-radius:12px; background: white; }
+        
+        nav ul { display:flex; list-style:none; }
+        nav ul li { margin-left:25px; }
+        nav a { color:white; text-decoration:none; font-weight:bold; font-size: 15px; }
+
+        .menu-toggle {
+            display: none; 
+            font-size: 28px; 
+            cursor: pointer; 
+            color: white;
+        }
+
+        /* --- KONTEN PENCARIAN (CENTERED) --- */
         .search-wrapper {
             flex: 1;
             display: flex;
             justify-content: center;
-            padding: 50px 20px;
+            align-items: flex-start; /* Mulai dari atas tapi tetap center */
+            padding: 40px 20px;
+            width: 100%;
         }
 
         .search-card {
             width: 100%;
-            max-width: 800px;
+            max-width: 600px; /* Ukuran lebih pas untuk dibaca */
             background: white;
-            padding: 40px;
+            padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             text-align: center;
         }
 
-        .search-card h2 { color: #ff7a00; font-size: 28px; margin-bottom: 10px; }
-        .search-card p { color: #666; margin-bottom: 30px; }
+        .search-card h2 { color: #ff7a00; font-size: 24px; margin-bottom: 10px; }
+        .search-card p { color: #666; margin-bottom: 25px; font-size: 14px; }
 
         .input-group {
             display: flex;
-            gap: 10px;
+            flex-direction: column; /* Vertikal di HP agar lebih rapi */
+            gap: 15px;
             margin-bottom: 25px;
         }
 
         input[type="text"] {
-            flex: 1;
+            width: 100%;
             padding: 15px;
             border: 2px solid #eee;
             border-radius: 12px;
             outline: none;
             font-size: 16px;
+            text-align: center; /* Teks input di tengah */
         }
 
         input[type="text"]:focus { border-color: #ff7a00; }
 
         .btn-search {
-            padding: 0 30px;
+            width: 100%;
+            padding: 15px;
             background: #ff7a00;
             color: white;
             border: none;
             border-radius: 12px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 16px;
             transition: 0.3s;
         }
+        .btn-search:hover { background: #e66e00; }
 
-        /* --- TAMPILAN HASIL BANSOS --- */
+        /* --- TAMPILAN HASIL --- */
         .result-item {
             background: #fff;
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
             border: 1px solid #eee;
-            border-left: 8px solid #ff7a00;
-            margin-bottom: 20px;
+            border-left: 6px solid #ff7a00;
+            margin-top: 20px;
             text-align: left;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
         }
 
-        .result-item h3 { color: #333; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        
         .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 10px;
+            margin-top: 10px;
         }
 
-        .info-box span { display: block; font-size: 12px; color: #888; text-transform: uppercase; }
-        .info-box strong { font-size: 15px; color: #444; }
+        .info-box span { display: block; font-size: 10px; color: #888; }
+        .info-box strong { font-size: 13px; color: #444; }
 
         .status-badge {
-            display: inline-block;
-            padding: 5px 12px;
+            font-size: 11px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 12px;
             font-weight: bold;
-            margin-top: 10px;
+            float: right;
         }
         .status-layak { background: #e6f9ed; color: #1db954; }
         .status-tidak { background: #fdeaea; color: #e91e63; }
 
-        footer{background:#222; color:white; text-align:center; padding:25px;}
+        footer{ background:#222; color:white; text-align:center; padding:25px; width: 100%; }
         .feth-text { font-size: 11px; opacity: 0.5; margin-top: 8px; }
 
-        /* CSS UNTUK MOBILE MENU (HAMBURGER) */
-@media(max-width: 768px) {
-    /* Tombol Garis Tiga */
-    .menu-toggle {
-        display: block !important;
-        color: white;
-        font-size: 28px;
-        cursor: pointer;
-    }
+        /* --- RESPONSIVE HP --- */
+        @media(max-width: 768px) {
+            .menu-toggle { display: block; }
+            
+            nav ul {
+                display: none; 
+                flex-direction: column;
+                background: #ff7a00;
+                position: absolute;
+                top: 75px; 
+                right: 0;
+                width: 100%;
+                z-index: 1001;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
 
-    /* Kotak Menu Dropdown */
-    nav ul {
-        display: none; 
-        flex-direction: column;
-        background: #ff7a00; /* Warna Oren Solid */
-        position: absolute;
-        top: 100%; /* Muncul tepat di bawah header */
-        right: 0;
-        width: 100%; 
-        padding: 0;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-        z-index: 9999; /* Agar tidak tertutup konten lain */
-        border-top: 1px solid rgba(255,255,255,0.2);
-    }
+            nav ul.show { display: flex; }
+            nav ul li { margin: 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            nav ul li a { padding: 20px; display: block; text-align: center; }
 
-    /* Menampilkan menu saat class 'show' aktif */
-    nav ul.show {
-        display: flex;
-    }
-
-    /* Baris Menu */
-    nav ul li {
-        margin: 0;
-        width: 100%;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    /* Link Menu - Pastikan Warna Putih */
-    nav ul li a {
-        display: block;
-        padding: 20px;
-        color: #ffffff !important; /* Paksa warna putih agar terlihat */
-        text-decoration: none;
-        font-weight: bold;
-        text-align: center;
-        width: 100%;
-    }
-
-    /* Efek saat ditekan */
-    nav ul li a:active {
-        background: #e66e00;
-    }
-}
+            .search-wrapper { padding: 20px 15px; }
+            .search-card { padding: 25px 20px; }
+        }
     </style>
 </head>
 <body>
@@ -169,15 +173,14 @@
     <nav>
         <div class="logo-area">
             <img src="katar.png" alt="Logo">
-            <strong>Karang Taruna RW 05</strong>
+            <strong>RW 05 Digital</strong>
         </div>
         
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-        
+
         <ul id="menu">
             <li><a href="index.html">Beranda</a></li>
-            <li><a href="index.html#berita">Berita</a></li>
-            <li><a href="index2.html">kembali</a></li>
+            <li><a href="index2.html">Layanan</a></li>
         </ul>
     </nav>
 </header>
@@ -185,10 +188,10 @@
 <main class="search-wrapper">
     <div class="search-card">
         <h2>Cek Bantuan Sosial</h2>
-        <p>Masukkan Nama Anda untuk mengecek status kelayakan dan jadwal penyaluran bantuan pemerintah.</p>
+        <p>Gunakan nama lengkap untuk melihat status bantuan pemerintah Anda di wilayah RW 05.</p>
         
         <div class="input-group">
-            <input type="text" id="inputNama" placeholder="Ketik Nama Lengkap Anda...">
+            <input type="text" id="inputNama" placeholder="Contoh: Ahmad">
             <button class="btn-search" onclick="cariBansos()">Cari Data</button>
         </div>
 
@@ -198,20 +201,16 @@
 
 <footer>
     <p>© 2026 Unit Kerja Karang Taruna RW 05</p>
-    <p class="feth-text">Portal Digital Terpadu RW 05 - Pulo Gebang</p>
+    <p class="feth-text">Sistem Informasi Bantuan Sosial Terpadu</p>
 </footer>
 
 <script>
-    // DATA DARI FILE BANSOS.XLSX
     const dbBansos = [
-        {"Nama":"Ahmad","RT":"10","Status":"Layak","Jenis":"PKH","Nominal":"Rp 750.000","Penyaluran":"Sudah Cair","Ket":"Kategori Lansia & Kesehatan"},
+        {"Nama":"Ahmad","RT":"10","Status":"Layak","Jenis":"PKH","Nominal":"Rp 750.000","Penyaluran":"Sudah Cair","Ket":"Kategori Lansia"},
         {"Nama":"Ilham","RT":"01","Status":"Tidak Layak","Jenis":"-","Nominal":"0","Penyaluran":"Dibatalkan","Ket":"Ekonomi Mampu"},
-        {"Nama":"Siti","RT":"10","Status":"Layak","Jenis":"BPNT","Nominal":"Rp 200.000","Penyaluran":"Proses","Ket":"Bantuan Pangan Non-Tunai"},
-        {"Nama":"Rizky","RT":"07","Status":"Layak","Jenis":"BLT Desa","Nominal":"Rp 300.000","Penyaluran":"Sudah Cair","Ket":"Dana Desa Tahap 2"},
-        {"Nama":"Agus","RT":"09","Status":"Layak","Jenis":"PKH","Nominal":"Rp 600.000","Penyaluran":"Sudah Cair","Ket":"Kategori Anak Sekolah"},
-        {"Nama":"Rina","RT":"05","Status":"Layak","Jenis":"KIP Kuliah","Nominal":"Rp 1.000.000","Penyaluran":"Verifikasi","Ket":"Beasiswa Pendidikan"},
-        {"Nama":"Wati","RT":"09","Status":"Layak","Jenis":"BPNT","Nominal":"Rp 200.000","Penyaluran":"Sudah Cair","Ket":"Bantuan Sembako"},
-        {"Nama":"Dedi","RT":"03","Status":"Layak","Jenis":"BLT Desa","Nominal":"Rp 300.000","Penyaluran":"Sudah Cair","Ket":"Dana Desa Tahap 1"}
+        {"Nama":"Siti","RT":"10","Status":"Layak","Jenis":"BPNT","Nominal":"Rp 200.000","Penyaluran":"Proses","Ket":"Sembako"},
+        {"Nama":"Rizky","RT":"07","Status":"Layak","Jenis":"BLT Desa","Nominal":"Rp 300.000","Penyaluran":"Sudah Cair","Ket":"Dana Desa"},
+        {"Nama":"Agus","RT":"09","Status":"Layak","Jenis":"PKH","Nominal":"Rp 600.000","Penyaluran":"Sudah Cair","Ket":"Anak Sekolah"}
     ];
 
     function cariBansos() {
@@ -219,7 +218,7 @@
         const display = document.getElementById("hasilPencarian");
         display.innerHTML = "";
 
-        if(!input) { alert("Masukkan nama terlebih dahulu!"); return; }
+        if(!input) { alert("Tulis nama Anda!"); return; }
 
         const hasil = dbBansos.filter(w => w.Nama.toLowerCase().includes(input));
 
@@ -228,41 +227,26 @@
                 const statusClass = data.Status === "Layak" ? "status-layak" : "status-tidak";
                 display.innerHTML += `
                     <div class="result-item">
-                        <h3>${data.Nama} <span class="status-badge ${statusClass}">${data.Status.toUpperCase()}</span></h3>
+                        <span class="status-badge ${statusClass}">${data.Status.toUpperCase()}</span>
+                        <h3 style="font-size:16px;">${data.Nama}</h3>
                         <div class="info-grid">
-                            <div class="info-box"><span>Jenis Bantuan</span><strong>${data.Jenis}</strong></div>
-                            <div class="info-box"><span>Besaran</span><strong>${data.Nominal}</strong></div>
-                            <div class="info-box"><span>Status Penyaluran</span><strong style="color:#ff7a00">${data.Penyaluran}</strong></div>
-                            <div class="info-box"><span>Keterangan</span><strong>${data.Ket}</strong></div>
+                            <div class="info-box"><span>Jenis</span><strong>${data.Jenis}</strong></div>
+                            <div class="info-box"><span>Dana</span><strong>${data.Nominal}</strong></div>
+                            <div class="info-box"><span>Penyaluran</span><strong style="color:#ff7a00">${data.Penyaluran}</strong></div>
+                            <div class="info-box"><span>RT</span><strong>${data.RT}</strong></div>
                         </div>
-                        <p style="font-size:11px; margin-top:15px; color:#999;">Lokasi: RT ${data.RT} / RW 05</p>
                     </div>
                 `;
             });
         } else {
-            display.innerHTML = "<p style='color:red; margin-top:20px;'>Data tidak ditemukan atau Anda belum terdaftar dalam sistem bantuan sosial RW 05.</p>";
+            display.innerHTML = "<p style='color:red; margin-top:20px; font-size:14px;'>Data tidak ditemukan.</p>";
         }
     }
-</script>
-<script>
-function toggleMenu() {
-    var menu = document.getElementById("menu");
-    if (menu.classList.contains("show")) {
-        menu.classList.remove("show");
-    } else {
-        menu.classList.add("show");
-    }
-}
 
-// Menutup menu jika layar di-scroll atau link diklik
-window.onclick = function(event) {
-    if (!event.target.matches('.menu-toggle')) {
-        var menu = document.getElementById("menu");
-        if (menu.classList.contains('show')) {
-            menu.classList.remove('show');
-        }
+    function toggleMenu() {
+        document.getElementById('menu').classList.toggle('show');
     }
-}
 </script>
+
 </body>
 </html>
