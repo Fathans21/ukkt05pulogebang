@@ -6,53 +6,77 @@
     <title>Data Pengurus - RW 05</title>
     
     <style>
-        /* --- CSS DASAR (Konsisten dengan index 3) --- */
+        /* --- CSS DASAR (Konsisten & Responsive) --- */
         *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-        body{line-height:1.6;color:#333;background:#f9f9f9; min-height: 100vh; display: flex; flex-direction: column;}
-        
-        header{
-            background:#ff7a00; color:white; padding:10px 30px; 
-            position:sticky; top:0; z-index:1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        body{
+            line-height:1.6;
+            color:#333;
+            background:#f9f9f9; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
         }
-        nav{display:flex; justify-content:space-between; align-items:center;}
-        .logo-area {display:flex; align-items:center; gap:10px;}
-        .logo-area img {height:55px; width:55px; border-radius:12px;}
         
-        nav ul{display:flex; list-style:none;}
-        nav ul li{margin-left:25px;}
-        nav a{color:white; text-decoration:none; font-weight:bold; font-size: 15px;}
+        /* HEADER: Full Width */
+        header {
+            background:#ff7a00; 
+            color:white; 
+            padding:10px 0; 
+            position:sticky; 
+            top:0; 
+            z-index:1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+        }
 
-        /* --- KONTEN PENCARIAN PENGURUS --- */
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+
+        .logo-area { display:flex; align-items:center; gap:10px; }
+        .logo-area img { height:55px; width:55px; border-radius:12px; background: white; }
+        
+        /* MENU DESKTOP */
+        nav ul { display:flex; list-style:none; }
+        nav ul li { margin-left:25px; }
+        nav a { color:white; text-decoration:none; font-weight:bold; font-size: 15px; }
+
+        .menu-toggle {
+            display: none; 
+            font-size: 28px; 
+            cursor: pointer; 
+            color: white;
+        }
+
+        /* --- KONTEN PENCARIAN (CENTERED) --- */
         .search-wrapper {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding: 50px 20px;
+            padding: 40px 20px;
+            width: 100%;
         }
 
         .search-card {
             width: 100%;
             max-width: 700px;
             background: white;
-            padding: 40px;
+            padding: 35px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             text-align: center;
         }
 
-        .search-card h2 {
-            color: #ff7a00;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
+        .search-card h2 { color: #ff7a00; font-size: 26px; margin-bottom: 10px; }
+        .search-card p { color: #666; margin-bottom: 25px; font-size: 14px; }
 
-        .search-card p {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 15px;
-        }
-
+        /* Input Group: Column di HP, Row di Desktop */
         .input-group {
             display: flex;
             gap: 10px;
@@ -69,9 +93,7 @@
             transition: 0.3s;
         }
 
-        input[type="text"]:focus {
-            border-color: #ff7a00;
-        }
+        input[type="text"]:focus { border-color: #ff7a00; }
 
         .btn-search {
             padding: 0 30px;
@@ -84,24 +106,17 @@
             font-size: 16px;
             transition: 0.3s;
         }
+        .btn-search:hover { background: #e66e00; }
 
-        .btn-search:hover {
-            background: #e66e00;
-        }
-
-        /* --- HASIL PENCARIAN PENGURUS --- */
-        #containerHasil {
-            margin-top: 20px;
-            text-align: left;
-        }
-
+        /* --- HASIL PENCARIAN --- */
         .pengurus-item {
             background: #fff;
             padding: 20px;
             border-radius: 12px;
-            border-left: 6px solid #333; /* Warna gelap untuk membedakan dengan data warga */
+            border-left: 6px solid #333;
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             margin-bottom: 15px;
+            text-align: left;
             animation: fadeIn 0.4s ease;
         }
 
@@ -110,67 +125,39 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .pengurus-item h3 { color: #ff7a00; margin-bottom: 10px; text-transform: uppercase; }
-        .pengurus-item p { margin-bottom: 5px; color: #555; font-size: 14px;}
-        .pengurus-item b { color: #333; }
+        .pengurus-item h3 { color: #ff7a00; margin-bottom: 8px; font-size: 18px; }
+        .pengurus-item p { margin-bottom: 4px; color: #555; font-size: 14px; }
 
-        /* FOOTER */
-        footer{background:#222; color:white; text-align:center; padding:25px;}
+        /* FOOTER: Full Width */
+        footer { background:#222; color:white; text-align:center; padding:30px; width: 100%; }
         .feth-text { font-size: 11px; opacity: 0.5; margin-top: 8px; }
 
-        /* CSS UNTUK MOBILE MENU (HAMBURGER) */
-@media(max-width: 768px) {
-    /* Tombol Garis Tiga */
-    .menu-toggle {
-        display: block !important;
-        color: white;
-        font-size: 28px;
-        cursor: pointer;
-    }
+        /* --- RESPONSIVE MOBILE --- */
+        @media(max-width: 768px) {
+            .menu-toggle { display: block; }
+            
+            nav ul {
+                display: none; 
+                flex-direction: column;
+                background: #ff7a00;
+                position: absolute;
+                top: 75px; 
+                right: 0;
+                width: 100%;
+                z-index: 1001;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
 
-    /* Kotak Menu Dropdown */
-    nav ul {
-        display: none; 
-        flex-direction: column;
-        background: #ff7a00; /* Warna Oren Solid */
-        position: absolute;
-        top: 100%; /* Muncul tepat di bawah header */
-        right: 0;
-        width: 100%; 
-        padding: 0;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-        z-index: 9999; /* Agar tidak tertutup konten lain */
-        border-top: 1px solid rgba(255,255,255,0.2);
-    }
+            nav ul.show { display: flex; }
+            nav ul li { margin: 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            nav ul li a { padding: 20px; display: block; text-align: center; }
 
-    /* Menampilkan menu saat class 'show' aktif */
-    nav ul.show {
-        display: flex;
-    }
-
-    /* Baris Menu */
-    nav ul li {
-        margin: 0;
-        width: 100%;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    /* Link Menu - Pastikan Warna Putih */
-    nav ul li a {
-        display: block;
-        padding: 20px;
-        color: #ffffff !important; /* Paksa warna putih agar terlihat */
-        text-decoration: none;
-        font-weight: bold;
-        text-align: center;
-        width: 100%;
-    }
-
-    /* Efek saat ditekan */
-    nav ul li a:active {
-        background: #e66e00;
-    }
-}
+            .input-group { flex-direction: column; }
+            .btn-search { padding: 15px; }
+            
+            .search-wrapper { padding: 20px 15px; }
+            .search-card { padding: 25px 20px; }
+        }
     </style>
 </head>
 <body>
@@ -183,11 +170,11 @@
         </div>
         
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-        
+
         <ul id="menu">
             <li><a href="index.html">Beranda</a></li>
-            <li><a href="index.html#berita">Berita</a></li>
             <li><a href="index.html#kontak">Kontak</a></li>
+            <li><a href="index2.html">Layanan</a></li>
         </ul>
     </nav>
 </header>
@@ -195,15 +182,14 @@
 <main class="search-wrapper">
     <div class="search-card">
         <h2>Data Pengurus</h2>
-        <p>Cari profil pengurus Karang Taruna RW 05 Masa Bakti 2025.</p>
+        <p>Gunakan nama lengkap atau panggilan untuk mencari profil pengurus aktif.</p>
         
         <div class="input-group">
-            <input type="text" id="inputCari" placeholder="Masukkan Nama Pengurus...">
+            <input type="text" id="inputCari" placeholder="Contoh: Fathan Surya">
             <button class="btn-search" onclick="mulaiCari()">Cari</button>
         </div>
 
-        <div id="containerHasil">
-            </div>
+        <div id="containerHasil"></div>
     </div>
 </main>
 
@@ -213,7 +199,6 @@
 </footer>
 
 <script>
-// DATABASE PENGURUS KARANG TARUNA RW 05 (Masa Bakti 2025 - Sekarang)
 const databasePengurus = [
     {"Nama": "Fathan Surya", "Jabatan": "Ketua Karang Taruna", "RT": "013", "MasaAktif": "2025 - Sekarang"},
     {"Nama": "Aldy", "Jabatan": "Wakil Ketua Karang Taruna", "RT": "014", "MasaAktif": "2025 - Sekarang"},
@@ -256,20 +241,15 @@ const databasePengurus = [
     function mulaiCari() {
         const keyword = document.getElementById("inputCari").value.toLowerCase();
         const box = document.getElementById("containerHasil");
-        
-        box.innerHTML = ""; // Bersihkan hasil sebelumnya
+        box.innerHTML = "";
 
-        if(!keyword) {
-            box.innerHTML = "<p style='color:#999; text-align:center;'>Silahkan masukkan nama pengurus.</p>";
-            return;
-        }
+        if(!keyword) { alert("Masukkan nama!"); return; }
 
         const hasil = databasePengurus.filter(p => p.Nama.toLowerCase().includes(keyword));
 
         if(hasil.length > 0) {
-            let listHtml = "";
             hasil.forEach(p => {
-                listHtml += `
+                box.innerHTML += `
                 <div class="pengurus-item">
                     <h3>${p.Nama}</h3>
                     <p><b>Jabatan:</b> ${p.Jabatan}</p>
@@ -277,37 +257,16 @@ const databasePengurus = [
                     <p><b>Masa Aktif:</b> ${p.MasaAktif}</p>
                 </div>`;
             });
-            box.innerHTML = listHtml;
         } else {
-            box.innerHTML = "<p style='color:red; text-align:center;'>Nama pengurus tidak ditemukan.</p>";
+            box.innerHTML = "<p style='color:red; text-align:center; font-size:14px; margin-top:20px;'>Pengurus tidak ditemukan.</p>";
         }
     }
 
-    // Enter key support
+    function toggleMenu() { document.getElementById('menu').classList.toggle('show'); }
+
     document.getElementById("inputCari").addEventListener("keypress", function(e) {
         if (e.key === "Enter") mulaiCari();
     });
 </script>
-<script>
-function toggleMenu() {
-    var menu = document.getElementById("menu");
-    if (menu.classList.contains("show")) {
-        menu.classList.remove("show");
-    } else {
-        menu.classList.add("show");
-    }
-}
-
-// Menutup menu jika layar di-scroll atau link diklik
-window.onclick = function(event) {
-    if (!event.target.matches('.menu-toggle')) {
-        var menu = document.getElementById("menu");
-        if (menu.classList.contains('show')) {
-            menu.classList.remove('show');
-        }
-    }
-}
-</script>
-
 </body>
 </html>
