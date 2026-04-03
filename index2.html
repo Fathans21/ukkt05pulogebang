@@ -11,140 +11,82 @@
         body{line-height:1.6;color:#333;background:#f9f9f9; min-height: 100vh; display: flex; flex-direction: column;}
         
         /* HEADER RAPI: Logo Kiri, Menu Kanan */
-        header{
-            background:#ff7a00; color:white; padding:10px 30px; 
-            position:sticky; top:0; z-index:1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        nav{display:flex; justify-content:space-between; align-items:center;}
-        .logo-area {display:flex; align-items:center; gap:10px;}
-        .logo-area img {height:60px; width:60px; border-radius:15px;}
-        
-        nav ul{display:flex; list-style:none;}
-        nav ul li{margin-left:25px;}
-        nav a{color:white; text-decoration:none; font-weight:bold; font-size: 15px; transition: 0.3s;}
-        nav a:hover{opacity: 0.8;}
+header {
+    background: #ff7a00;
+    color: white;
+    padding: 10px 20px;
+    width: 100%; /* Memastikan header full width */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-        /* --- LAYOUT GRID TERPISAH --- */
-        .main-container {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            flex: 1;
-        }
+/* Memastikan konten utama berada di tengah */
+.main-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center; /* Mengetengahkan grid */
+    align-items: start;
+}
 
-        /* STYLE KARTU */
-        .service-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        
-        .service-card h2 { color: #ff7a00; margin-bottom: 20px; font-size: 26px; }
-        .service-card p { font-size: 15px; color: #666; margin-bottom: 30px; min-height: 60px;}
-        
-        /* TOMBOL SEMUA ORANGE */
-        .btn-orange {
-            width: 100%;
-            padding: 15px;
-            background: #ff7a00;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 16px;
-            transition: 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn-orange:hover { background: #e66e00; box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3); }
+/* Memperbaiki Footer agar Full Width */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    width: 100%;
+    margin-top: auto;
+}
 
-        /* FOOTER */
-        footer{background:#222; color:white; text-align:center; padding:30px; margin-top: 40px;}
-        .feth-text { font-size: 11px; opacity: 0.6; margin-top: 10px; letter-spacing: 1px; }
-
-        /* CSS UNTUK MOBILE MENU (HAMBURGER) */
+/* --- RESPONSIVE UNTUK HP --- */
 @media(max-width: 768px) {
-    /* Tombol Garis Tiga */
-    .menu-toggle {
-        display: block !important;
-        color: white;
-        font-size: 28px;
-        cursor: pointer;
+    .main-container {
+        grid-template-columns: 1fr; /* Satu kolom di HP */
+        margin: 20px auto;
+        padding: 0 15px;
     }
 
-    /* Kotak Menu Dropdown */
-    nav ul {
-        display: none; 
-        flex-direction: column;
-        background: #ff7a00; /* Warna Oren Solid */
-        position: absolute;
-        top: 100%; /* Muncul tepat di bawah header */
-        right: 0;
-        width: 100%; 
-        padding: 0;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-        z-index: 9999; /* Agar tidak tertutup konten lain */
-        border-top: 1px solid rgba(255,255,255,0.2);
+    .service-card {
+        padding: 25px; /* Mengurangi padding agar kartu tidak terlalu panjang */
+        max-width: 400px; /* Membatasi lebar kartu agar tidak terlalu lebar */
+        margin: 0 auto; /* Mengetengahkan kartu di layar HP */
     }
 
-    /* Menampilkan menu saat class 'show' aktif */
-    nav ul.show {
+    .logo-area strong {
+        font-size: 14px;
+    }
+    
+    /* Memastikan tombol toggle dan logo sejajar */
+    nav {
         display: flex;
-    }
-
-    /* Baris Menu */
-    nav ul li {
-        margin: 0;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    /* Link Menu - Pastikan Warna Putih */
-    nav ul li a {
-        display: block;
-        padding: 20px;
-        color: #ffffff !important; /* Paksa warna putih agar terlihat */
-        text-decoration: none;
-        font-weight: bold;
-        text-align: center;
-        width: 100%;
-    }
-
-    /* Efek saat ditekan */
-    nav ul li a:active {
-        background: #e66e00;
     }
 }
-    </style>
-</head>
 <body>
 
 <header>
-    <nav>
+    <nav style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
         <div class="logo-area">
-            <img src="katar.png" alt="Logo">
-            <strong>Karang Taruna RW 05</strong>
+            <img src="katar.png" alt="Logo" style="height: 50px; width: 50px;">
+            <strong style="margin-left: 10px;">Karang Taruna RW 05</strong>
         </div>
         
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="menu-toggle" onclick="toggleMenu()" style="display: none; font-size: 24px; cursor: pointer;">☰</div>
         
         <ul id="menu">
             <li><a href="index.html">Beranda</a></li>
             <li><a href="index.html#berita">Berita</a></li>
-            <li><a href="index.html#kontak">Kontak</a></li>
+            <li><a href="index.html">Kembali</a></li>
         </ul>
     </nav>
+</header>
 </header>
 
 <main class="main-container">
