@@ -75,49 +75,53 @@
 
         /* CSS UNTUK MOBILE MENU (HAMBURGER) */
 @media(max-width: 768px) {
-    /* Memunculkan tombol garis tiga */
+    /* Tombol Garis Tiga */
     .menu-toggle {
         display: block !important;
         color: white;
         font-size: 28px;
+        cursor: pointer;
     }
 
-    /* Mengubah daftar menu menjadi tampilan slide-down oren */
+    /* Kotak Menu Dropdown */
     nav ul {
         display: none; 
         flex-direction: column;
-        background: #ff7a00; /* Warna Oren Utama */
+        background: #ff7a00; /* Warna Oren Solid */
         position: absolute;
-        top: 80px; 
+        top: 100%; /* Muncul tepat di bawah header */
         right: 0;
-        width: 100%; /* Memenuhi lebar layar HP */
+        width: 100%; 
         padding: 0;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        z-index: 9999; /* Agar tidak tertutup konten lain */
         border-top: 1px solid rgba(255,255,255,0.2);
     }
 
-    /* Tampilan saat menu terbuka */
+    /* Menampilkan menu saat class 'show' aktif */
     nav ul.show {
         display: flex;
     }
 
-    /* Merapikan item menu di dalam list */
+    /* Baris Menu */
     nav ul li {
         margin: 0;
-        text-align: center;
+        width: 100%;
         border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
+    /* Link Menu - Pastikan Warna Putih */
     nav ul li a {
         display: block;
         padding: 20px;
-        color: white;
+        color: #ffffff !important; /* Paksa warna putih agar terlihat */
         text-decoration: none;
         font-weight: bold;
+        text-align: center;
         width: 100%;
     }
 
-    /* Efek saat menu diklik/ditekan */
+    /* Efek saat ditekan */
     nav ul li a:active {
         background: #e66e00;
     }
@@ -132,7 +136,10 @@
             <img src="katar.png" alt="Logo">
             <strong>Karang Taruna RW 05</strong>
         </div>
-        <ul>
+        
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        
+        <ul id="menu">
             <li><a href="index.html">Beranda</a></li>
             <li><a href="index.html#berita">Berita</a></li>
             <li><a href="index.html#kontak">Kontak</a></li>
@@ -171,21 +178,25 @@
     <p class="feth-text">Portal Digital Terpadu RW 05 - Pulo Gebang</p>
 </footer>
 
-    <script>
-    function toggleMenu() {
-        const menu = document.getElementById('menu');
-        menu.classList.toggle('show');
+   <script>
+function toggleMenu() {
+    var menu = document.getElementById("menu");
+    if (menu.classList.contains("show")) {
+        menu.classList.remove("show");
+    } else {
+        menu.classList.add("show");
     }
+}
 
-    // Menutup menu secara otomatis saat link diklik (khusus mobile)
-    document.querySelectorAll('#menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            const menu = document.getElementById('menu');
-            if (menu.classList.contains('show')) {
-                menu.classList.remove('show');
-            }
-        });
-    });
+// Menutup menu jika layar di-scroll atau link diklik
+window.onclick = function(event) {
+    if (!event.target.matches('.menu-toggle')) {
+        var menu = document.getElementById("menu");
+        if (menu.classList.contains('show')) {
+            menu.classList.remove('show');
+        }
+    }
+}
 </script>
 </body>
 </html>
