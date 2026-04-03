@@ -109,9 +109,55 @@
         }
         .feth-text { font-size: 11px; opacity: 0.5; margin-top: 8px; }
 
-        @media(max-width: 600px) {
-            .hero-section h1 { font-size: 1.8rem; }
-        }
+        /* CSS UNTUK MOBILE MENU (HAMBURGER) */
+@media(max-width: 768px) {
+    /* Memunculkan tombol garis tiga */
+    .menu-toggle {
+        display: block !important;
+        color: white;
+        font-size: 28px;
+    }
+
+    /* Mengubah daftar menu menjadi tampilan slide-down oren */
+    nav ul {
+        display: none; 
+        flex-direction: column;
+        background: #ff7a00; /* Warna Oren Utama */
+        position: absolute;
+        top: 80px; 
+        right: 0;
+        width: 100%; /* Memenuhi lebar layar HP */
+        padding: 0;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Tampilan saat menu terbuka */
+    nav ul.show {
+        display: flex;
+    }
+
+    /* Merapikan item menu di dalam list */
+    nav ul li {
+        margin: 0;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 20px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        width: 100%;
+    }
+
+    /* Efek saat menu diklik/ditekan */
+    nav ul li a:active {
+        background: #e66e00;
+    }
+}
     </style>
 </head>
 <body>
@@ -188,6 +234,21 @@
     <p>© 2026 Divisi Sosial & Kerohanian - Karang Taruna RW 05</p>
     <p class="feth-text">Feth: Portal Digital Terpadu RW 05 - Pulo Gebang</p>
 </footer>
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('show');
+    }
 
+    // Menutup menu secara otomatis saat link diklik (khusus mobile)
+    document.querySelectorAll('#menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            const menu = document.getElementById('menu');
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+            }
+        });
+    });
+</script>
 </body>
 </html>
